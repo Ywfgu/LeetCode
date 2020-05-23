@@ -1,11 +1,26 @@
 package com.sort;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-public class QuickSort {
+/**
+ * 快速排序
+ */
+public class QuickSort extends AbstractSort{
 
     @Test
-    public void sort(){
-        System.out.println("ok");
+    @Override
+    public void testSort() {
+        super.testSort();
     }
+
+    @Override
+    public int[] sort(int[] A) {
+
+
+
+
+
+        return new int[0];
+    }
+
 }
