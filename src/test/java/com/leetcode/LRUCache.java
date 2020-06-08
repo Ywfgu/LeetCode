@@ -87,7 +87,7 @@ public class LRUCache {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(OpString[] args) {
         LRUCache cache = new LRUCache( 2 /* 缓存容量 */ );
 
         cache.put(1, 1);
