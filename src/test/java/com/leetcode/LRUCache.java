@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import com.leetcode.string.OpString;
+
 import java.util.HashMap;
 
 public class LRUCache {
