@@ -58,27 +58,29 @@ public class QuickSort extends AbstractSort{
     }
 
 
+    /**
+     * 递归版快速排序
+     * @param arr
+     * @param left
+     * @param right
+     */
     public void quickSort2(int[] arr, int left, int right)
      {
-         if(left>=right) return ;
+         if(left > right) return;
+
          int par = arr[left];
-         int l=left;
-         int r=right;
-         while(l<r)
-         {
-             while(l<r && arr[r]>par)
-             {
+         int l = left;
+         int r = right;
+         while (l < r){
+             while (l < r && arr[r] > par){
                  r--;
              }
-
-             while(l<r && arr[l]<=par)
-             {
+             while (l < r && arr[l] <= par){
                  l++;
              }
-             if(l<r)
-                 swap(arr, l, r);
+             if(l < r) swap(arr, l, r);
          }
-         swap(arr,left,l);
+         swap(arr, l, left);
          quickSort2(arr, left, l-1);
          quickSort2(arr, l+1, right);
      }
