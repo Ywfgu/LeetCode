@@ -7,7 +7,7 @@ public class Solution {
     /**
      * 面试题42. 连续子数组的最大和
      * https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/
-     *
+     * https://leetcode-cn.com/problems/maximum-subarray/
      * @param nums
      * @return
      */
@@ -92,7 +92,6 @@ public class Solution {
         }
         return Math.min(res[cost.length - 1], res[cost.length - 2]);
     }
-
     public int minCostClimbingStairs2(int[] cost) {
         int f0 = cost[0];
         int f1 = cost[1];
@@ -103,6 +102,62 @@ public class Solution {
             f1 = f2;
         }
         return Math.min(f0, f1);
+    }
+
+    /**
+     * 198. 打家劫舍
+     * https://leetcode-cn.com/problems/house-robber/
+     * @param nums
+     * @return
+     */
+    public int rob(int[] nums) {
+        int f0 = 0, f1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int f2 = Math.max(f0 + nums[i], f1);
+            f0 = f1;
+            f1 = f2;
+        }
+        return Math.max(f0, f1);
+    }
+
+    /**
+     * 213. 打家劫舍 II
+     * https://leetcode-cn.com/problems/house-robber-ii/
+     * @param nums
+     * @return
+     */
+    public int rob2(int[] nums) {
+        if(nums.length == 1) return nums[0];
+        int f0 = 0, f1 = 0;
+        for (int i = 0; i < nums.length-1; i++) {
+            int f2 = Math.max(f0 + nums[i], f1);
+            f0 = f1;
+            f1 = f2;
+        }
+        int q1 = Math.max(f0, f1);
+        f0 = 0; f1 = 0;
+        for (int i = 1; i < nums.length; i++) {
+            int f2 = Math.max(f0 + nums[i], f1);
+            f0 = f1;
+            f1 = f2;
+        }
+        int q2 = Math.max(f0, f1);
+
+        return Math.max(q1, q2);
+    }
+
+    public int rob3(int[] nums) {
+        return 0;
+    }
+
+    /**
+     * 121. 买卖股票的最佳时机
+     * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+     * @param prices
+     * @return
+     */
+    public int maxProfit(int[] prices) {
+        return 0;
     }
 
     @Test
