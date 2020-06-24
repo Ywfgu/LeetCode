@@ -1,9 +1,7 @@
-package com.leetcode.backtracking;
+package com.leetcode.backtrack;
 
-import org.apache.logging.log4j.util.Chars;
 import org.junit.Test;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

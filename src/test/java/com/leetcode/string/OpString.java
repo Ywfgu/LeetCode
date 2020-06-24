@@ -2,6 +2,7 @@ package com.leetcode.string;
 
 import org.junit.Test;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -143,5 +144,74 @@ public class OpString {
         }
 
         return sb.toString();
+    }
+
+    @Test
+    public void test(){
+
+        System.out.println(addBinary("1010","1011"));
+    }
+
+    public String addBinary(String a, String b) {
+        char[] stra = a.toCharArray();
+        char[] strb = b.toCharArray();
+
+        Stack<Integer> stacka = new Stack<>();
+        Stack<Integer> stackb = new Stack<>();
+
+        for (int i = 0; i < stra.length; i++) {
+            System.out.println("i="+i+"value"+stra[i]);
+            stacka.push(Integer.valueOf(""+stra[i]));
+        }
+        for (int i = 0; i < strb.length; i++) {
+            stackb.push(Integer.valueOf(""+strb[i]));
+        }
+        StringBuilder sb = new StringBuilder("");
+        int carray = 0, aa = 0, bb = 0;
+        while (!stacka.isEmpty() && !stackb.isEmpty()){
+            aa = stacka.pop();
+            bb = stackb.pop();
+            if(aa + bb + carray == 3 ){
+                sb.insert(0, 1);
+                carray = 1;
+            }else if(aa + bb + carray == 2 ){
+                sb.insert(0, 0);
+                carray = 1;
+            }else if(aa + bb + carray == 1 ){
+                sb.insert(0, 1);
+                carray = 0;
+            }else if(aa + bb + carray == 0 ){
+                sb.insert(0, 0);
+            }
+        }
+        while (!stacka.isEmpty()){
+            aa = stacka.pop()+carray;
+            if(aa == 2){
+                sb.insert(0, 0);
+                carray = 1;
+            }else if(aa == 1){
+                sb.insert(0, 1);
+                carray = 0;
+            }else if(aa == 0){
+                sb.insert(0, 0);
+                carray = 0;
+            }
+        }
+        while (!stackb.isEmpty()){
+            bb = stackb.pop()+carray;
+            if(bb == 2){
+                sb.insert(0, 0);
+                carray = 1;
+            }else if(bb == 1){
+                sb.insert(0, 1);
+                carray = 0;
+            }else if(bb == 0){
+                sb.insert(0, 0);
+                carray = 0;
+            }
+        }
+        if(carray == 1) sb.insert(0,1);
+        return sb.toString();
+
     }
 }

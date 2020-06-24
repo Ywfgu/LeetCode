@@ -1,9 +1,11 @@
 package com.leetcode.tree;
 
-/**
- * @author guht
- * @create 2020/6/22
- * @Description
- */
 public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+    }
 }

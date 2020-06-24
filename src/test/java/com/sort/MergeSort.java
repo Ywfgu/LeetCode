@@ -1,9 +1,7 @@
 package com.sort;
 
 /**
- * @author guht
- * @create 2020/6/24
- * @Description
+ * 归并排序
  */
 public class MergeSort {
 }

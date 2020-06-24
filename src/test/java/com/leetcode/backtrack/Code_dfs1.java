@@ -7,6 +7,14 @@ import java.util.List;
 
 /**
  * 回溯
+ *
+ * 1
+ * 1,2
+ * 1,2,3
+ * 1,3
+ * 2
+ * 2,3
+ * 3
  */
 public class Code_dfs1 {
 
