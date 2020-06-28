@@ -29,7 +29,7 @@ import java.util.List;
 public class Code78_Subsets {
 
     /**
-     * 迭代
+     * 迭代 每次在源结果集的元素上添加一个新元素作为新元素插入源结果集
      */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList();
@@ -91,12 +91,38 @@ public class Code78_Subsets {
         res.add(list);
     }
 
+    private List<List<Integer>> subsets4(int[] nums) {
+        int length = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+        if(length == 0) return res;
+
+        dfs(nums, length, 0, new ArrayList<>(), res);
+
+        return res;
+    }
+
+    private void dfs(int[] nums, int length, int start, ArrayList path, List<List<Integer>> res) {
+        res.add(new ArrayList<>(path));
+
+        for (int i = start; i < length; i++) {
+
+            path.add(nums[i]);
+
+            dfs(nums, length, i+1, path, res);
+
+            path.remove(path.size() -1 );
+        }
+    }
+
     @Test
     public void test(){
         subsets(new int[]{1,2,3});
         subsets2(new int[]{1,2,3});
         subsets3(new int[]{1,2,2});
+        subsets4(new int[]{1,2,3});
     }
+
+
 
 
 }
