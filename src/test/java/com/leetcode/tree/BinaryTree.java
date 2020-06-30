@@ -1,18 +1,8 @@
 package com.leetcode.tree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
-    static  class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-        public TreeNode(int val){
-            this.val = val;
-        }
-    }
 
     /**
      * 前序遍历，递归版
@@ -135,6 +125,25 @@ public class BinaryTree {
                 queue.add(tn.right);
             }
         }
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList();
+        Stack<TreeNode> stack = new Stack();
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()){
+            while (curr != null){
+                stack.push(curr);
+                curr = curr.left;
+            }
+            if(!stack.isEmpty()){
+                curr = stack.pop();
+                res.add(curr.val);
+                curr = curr.right;
+            }
+        }
+        
+        return res;
     }
 
 }
